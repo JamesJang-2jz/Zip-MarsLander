@@ -1,9 +1,11 @@
+import java.lang.reflect.Field;
+
 public class Vehicle {
 
     public Vehicle(int InitialAltitude) {
         Altitude = InitialAltitude;
         PrevAltitude = InitialAltitude;
-        // initialize the altitude AND previous altitude to initialAltitude 
+        // initialize the altitude AND previous altitude to initialAltitude
     }
 
     int Gravity = 100;
@@ -56,30 +58,42 @@ public class Vehicle {
 
     public int computeDeltaV() {
         // return velocity + gravity - burn amount
-        return Velocity + Gravity - ;
+        return Velocity + Gravity - Burn;
     }
 
     public void adjustForBurn(int burnAmount) {
         // set burn to burnamount requested
+        this.Burn = burnAmount;
         // save previousAltitude with current Altitude
+        PrevAltitude = Altitude;
         // set new velocity to result of computeDeltaV function.
+        Velocity = computeDeltaV();
         // subtract speed from Altitude
+        Altitude -= Velocity;
         // subtract burn amount fuel used from tank
+        Fuel -= Burn;
     }
 
     public boolean stillFlying() {
         // return true if altitude is positive
-        return false;
+        return Altitude > 0;
     }
     public boolean outOfFuel() {
         // return true if fuel is less than or equal to zero
-        return true;
+        return Fuel <= 0;
+    }
+    public void setStatus(int set){
+
     }
 
     public DescentEvent getStatus(int tick) {
         // create a return a new DescentEvent object
         // filled in with the state of the vehicle.
-        return null;
+
+        return new DescentEvent(tick, Velocity, Fuel, Altitude, Flying);
     }
+//    public void setStatus(int status){
+//        de
+//    }
 
 }

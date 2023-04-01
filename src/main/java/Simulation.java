@@ -57,6 +57,7 @@ public class Simulation {
             status = vehicle.getStatus(burnInterval);
             System.out.print(status.toString()+"\t\t");
             vehicle.adjustForBurn(burnSource.getNextBurn(status));
+//            vehicle.setStatus();
             if (vehicle.outOfFuel()) {
                 break;
             }
@@ -67,7 +68,9 @@ public class Simulation {
         }
         printString(vehicle.checkFinalStatus());
         if (status != null) {
-            return status.getStatus();
+//            status = vehicle.checkFinalStatus();
+            return vehicle.Flying;
+//            return vehicle.Flying.get
         }
         return -1;
     }
@@ -76,6 +79,9 @@ public class Simulation {
         // create a new Simulation object with a random starting altitude
         // create a new BurnInputStream
         // pass the new BurnInputStream to the runSimulation method
+        Simulation game = new Simulation(new Vehicle(5000));
+        BurnStream burnSource = new OnBoardComputer();
+        game.runSimulation(burnSource);
     }
 
 }
