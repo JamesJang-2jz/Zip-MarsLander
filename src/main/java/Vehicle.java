@@ -82,9 +82,9 @@ public class Vehicle {
         // return true if fuel is less than or equal to zero
         return Fuel <= 0;
     }
-    public void setStatus(int set){
-
-    }
+//    public void setStatus(int set){
+//
+//    }
 
     public DescentEvent getStatus(int tick) {
         // create a return a new DescentEvent object
@@ -92,8 +92,6 @@ public class Vehicle {
 
         return new DescentEvent(tick, Velocity, Fuel, Altitude, Flying);
     }
-//    public void setStatus(int status){
-//        de
-//    }
+
 
 }
