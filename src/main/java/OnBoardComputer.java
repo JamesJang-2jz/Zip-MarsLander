@@ -18,5 +18,5 @@ public class OnBoardComputer implements BurnStream {
         System.out.println(burn); /*hack!*/
         return burn;
     }
-    
+
 }
